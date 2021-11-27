@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{svg}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[obeyspaces,spaces]{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning}
+\graphicspath{images/}
+
+\usepackage{blindtext}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\title{Rapport projet optimisation linéaire}
+\author{ }
+\date{ }
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        
+        {\Large Université de Mons}\\[1ex]
+        {\Large Faculté Polytechnique}\\[1ex]
+        
+        \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+        % Title
+        \HRule \\[0.3cm]
+        { \LARGE \bfseries Projet optimisation linéaire \\[0.3cm]}
+        { \LARGE \bfseries Rapport \\[0.1cm]} % Commenter si pas besoin
+        \HRule \\[1.5cm]
+        
+        % Author and supervisor
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushleft} \large
+                \emph{Professeur:}\\
+                Nicolas \textsc{Gillis}\\
+                \emph{Assistant:}\\
+                Maxime \textsc{Gobert}\\
+            \end{flushleft}
+        \end{minipage}
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushright} \large
+                \emph{Auteurs:} \\
+                Thomas \textsc{Bernard} \\
+                Ugo \textsc{Proietti} \\
+            \end{flushright}
+        \end{minipage}\\[2ex]
+        
+        \vfill
+        
+        % Bottom of the page
+        \begin{center}
+            \begin{tabular}[t]{c c c}
+                \includegraphics[height=1.5cm]{images/logoumons.jpg} &
+                \hspace{0.3cm} &
+            \end{tabular}
+        \end{center}~\\
+        
+        {\large Année académique 2021-2022}
+        
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\section{Description du problème}
+
+\subfile{sections/description}
+
+\section{Modélisation}
+
+\subfile{sections/modelisation}
+
+\section{Mise sous forme standard}
+
+\subfile{sections/standard}
+
+\section{Résolution du problème avec GNU OCtave}
+
+\subfile{sections/resolution}
+
+\end{document}

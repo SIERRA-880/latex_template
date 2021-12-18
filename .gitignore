@@ -300,4 +300,5 @@ TSWLatexianTemp*
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
 
+#Ignoring PDF files since the main PDF will be generated on github
 *.pdf

@@ -1,131 +1,82 @@
-\RequirePackage{etex} % Added because the log told me to...
-\documentclass[a4paper,10pt]{article}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DEFAULT PACKAGES & CONFIGURATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%-------------------------------------------------------------------------------
-% Load standard packages
-%-------------------------------------------------------------------------------
-% Correct encoding of input (tex) files
-\usepackage[utf8]{inputenc}
-% Correct encoding of output (pdf, ps, dvi etc.) files
-\usepackage[T1]{fontenc}
-% Load to get rid of font-related warnings
-% \usepackage{lmodern}
-% Support for German & English (English is last so it is main language)
-\usepackage[ngerman, english]{babel}
-% Enable equations
-\usepackage{mathtools}
-% Enable additional math
+\documentclass{article}
+\usepackage{svg}
 \usepackage{amsmath}
-% Additional math symbols
-\usepackage{amssymb}
-% Improve text in math
-\usepackage{amstext}
-% Enable hyperlinks within the document
-\usepackage[hidelinks]{hyperref}
-% Use colors
-\usepackage[usenames,dvipsnames,svgnames,table,x11names,rgb,html]{xcolor}
-% Add space in macro whenever needed
-\usepackage{xspace}
-% Enable bold math
-\usepackage{bm}
-% Enable colored text
-\usepackage{color}
-% Enable professional-looking tables
-\usepackage{booktabs}
-% Allow easier creation of tables that fill the entire available space
-\usepackage{tabularx}
-% Enable page-breaking tables
-\usepackage{longtable}
-% Advanced caption setup
-\usepackage{caption}
-% Add todo notes
-\usepackage[]{todonotes}
-% Automatic conversion of .eps files
-\usepackage{epstopdf}
-% Additional general features
-\usepackage{etex}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[obeyspaces,spaces]{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning}
+\graphicspath{images/}
 
-%-------------------------------------------------------------------------------
-% Additional settings
-%-------------------------------------------------------------------------------
-% Set search path for image files
-\graphicspath{{./figures/}}
+\usepackage{blindtext}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% LOCAL ADDITIONS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{subfiles} % Best loaded last in the preamble
 
-% Sort & compress citations
-\usepackage[numbers,sort&compress]{natbib}
-
-% Use bibentry for manual entries
-\usepackage{bibentry}
-
-% Use fancy header package for header/footer on each page
-\usepackage{fancyhdr}
-
-% Allow reverse numbering of references
-\usepackage{etaremune}
-
-% For enhanced enumeration formatting
-\usepackage{enumitem}
-
-% Add blind text (Lorem ipsum...)
-\usepackage{lipsum}
-
-% Include PDFs in final document
-\usepackage{pdfpages}
-
-% Increase linespacing comfortably where desired
-\usepackage{setspace}
-
-% Increase penalties for single lines at the end or beginning of pages
-\clubpenalty=10000
-\widowpenalty=10000
-\displaywidowpenalty=10000
-
-% Modify margins and page setup
-\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-
-% Make longtable faster (hopefully) by increasing chunk size (from 10)
-\setcounter{LTchunksize}{40}
-
-% Globally disable indentation
-% \setlength{\parindent}{0pt}
-
-% Helper for adding clickable email addresses etc.
-\newcommand{\myemail}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
-\newcommand{\myurl}[1]{\href{#1}{\nolinkurl{#1}}}
-\newcommand{\myorcid}[1]{\href{https://orcid.org/#1}{\nolinkurl{#1}}}
-
-% Set title, author, date
-\title{GitHub Actions demonstrator for LaTex}
-\author{Michael Schlottke-Lakemper}
-\date{\today}
-
+\title{Rapport Sokoban}
+\author{ }
+\date{ }
 
 \begin{document}
+\begin{titlepage}
+    \begin{center}
+        
+        {\Large Université de Mons}\\[1ex]
+        {\Large Faculté des sciences}\\[1ex]
+        {\Large Département d'Informatique}\\[2.5cm]
+        
+        \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+        % Title
+        \HRule \\[0.3cm]
+        { \LARGE \bfseries Sokoban \\[0.3cm]}
+        { \LARGE \bfseries Rapport de projet \\[0.1cm]} % Commenter si pas besoin
+        \HRule \\[1.5cm]
+        
+        % Author and supervisor
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushleft} \large
+                \emph{Professeur:}\\
+                Hadrien \textsc{Mélot}\\
+                \emph{Assistants:}\\
+                Gauvain \textsc{Devillez}\\
+                Jérémy \textsc{Dubrulle}\\
+                Sébastien \textsc{Bonte}\\
+            \end{flushleft}
+        \end{minipage}
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushright} \large
+                \emph{Auteurs:} \\
+                Pignozi \textsc{Agbenda} \\
+                Theo \textsc{Godin} \\
+                Ugo \textsc{Proietti}
+            \end{flushright}
+        \end{minipage}\\[2ex]
+        
+        \vfill
+        
+        % Bottom of the page
+        \begin{center}
+            \begin{tabular}[t]{c c c}
+                \includegraphics[height=1.5cm]{images/logoumons.jpg} &
+                \hspace{0.3cm} &
+                \includegraphics[height=1.5cm]{images/logofs.jpg}
+            \end{tabular}
+        \end{center}~\\
+        
+        {\large Année académique 2020-2021}
+        
+    \end{center}
+\end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\maketitle
-
-% Set to one-and-half spacing
-\onehalfspacing
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Motivation}
-This repository serves as a demonstrator for how to set up GitHub Actions to automatically build a
-LaTex PDF on pushing to the repository's main branch. The built PDF will be pushed to a separate
-branch to allow a persistent (= convenient) link from the repository README file.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Usage}
-Have a look at the GitHub Actions workflow file in \texttt{.github/workflows/ci.yml}. The link to
-the produced LaTex file can be found in the \texttt{README.md}.
-
+\tableofcontents
 
 \end{document}

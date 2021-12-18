@@ -1,3 +1,7 @@
+
+#Ignoring PDF files since the main PDF will be generated on github
+*.pdf
+
 # Created by https://www.toptal.com/developers/gitignore/api/latex
 # Edit at https://www.toptal.com/developers/gitignore?templates=latex
 
@@ -299,6 +303,3 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
-
-#Ignoring PDF files since the main PDF will be generated on github
-*.pdf

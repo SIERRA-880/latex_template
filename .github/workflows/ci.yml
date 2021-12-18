@@ -15,12 +15,19 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: rapport.tex
+          working_directory : rapport/
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: annexe.tex
+          working_directory : rapport/annexe/
       - name: Copy to public folder for deployment
         shell: bash
         run: |
           mkdir -p public
-          cp main.pdf public/
+          cp rapport/rapport.pdf public/rapport.pdf
+          cp rapport/annexe/annexe.pdf public/annexe.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -28,3 +35,4 @@ jobs:
           publish_dir: ./public
           publish_branch: build-latex
           force_orphan: true # Ensures that not all previous PDFs are kept around forever
+

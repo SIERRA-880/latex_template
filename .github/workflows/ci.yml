@@ -47,8 +47,8 @@ jobs:
             draft: false
             prerelease: false
             #release_name: ${{ steps.version.outputs.version }}
-            #release_name: rapport
-            release_name: Release ${{ github.ref }}
+            release_name: Rapport
+            #release_name: Release ${{ github.ref }}
             tag_name: rapport-src
             #body_path: CHANGELOG.md
           env:
@@ -61,4 +61,4 @@ jobs:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
             asset_path: public/rapport.pdf
             asset_name: rapport.pdf
-            #asset_content_type: application/gzip
+            asset_content_type: application/pdf

@@ -35,25 +35,12 @@ jobs:
           publish_dir: ./public
           publish_branch: rapport-out
           force_orphan: true # Ensures that not all previous PDFs are kept around forever
-      - name: release PDF file
-        uses: actions/create-release@v1
-        id: create_release
+      - name: Release PDF files
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          draft: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
           prerelease: false
-          #release_name: ${{ steps.version.outputs.version }}
-          release_name: Rapport
-          #release_name: Release ${{ github.ref }}
-          tag_name: rapport-src
-          #body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: upload PDF file
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: rapport/rapport.pdf
-          asset_name: rapport.pdf
-          asset_content_type: application/pdf
+          title: "Rapport"
+          files: |
+            rapport/*.pdf

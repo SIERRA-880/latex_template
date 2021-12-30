@@ -40,19 +40,20 @@ jobs:
       needs: build_latex
       runs-on: ubuntu-latest
       steps:
-        - name: release
+        - name: release PDF file
           uses: actions/create-release@v1
           id: create_release
           with:
             draft: false
             prerelease: false
             #release_name: ${{ steps.version.outputs.version }}
-            release_name: rapport
+            #release_name: rapport
+            release_name: Release ${{ github.ref }}
             tag_name: rapport-src
             #body_path: CHANGELOG.md
           env:
             GITHUB_TOKEN: ${{ github.token }}
-        - name: upload pdf
+        - name: upload PDF file
           uses: actions/upload-release-asset@v1
           env:
             GITHUB_TOKEN: ${{ github.token }}

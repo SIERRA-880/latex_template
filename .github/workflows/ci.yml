@@ -48,7 +48,7 @@ jobs:
             prerelease: false
             #release_name: ${{ steps.version.outputs.version }}
             release_name: rapport
-            tag_name: ${{ github.ref }}
+            tag_name: rapport-src
             #body_path: CHANGELOG.md
           env:
             GITHUB_TOKEN: ${{ github.token }}

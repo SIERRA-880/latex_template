@@ -51,4 +51,4 @@ jobs:
           files: |
             rapport/rapport.pdf
             rapport/annexe/annexe.pdf
-            presentation/presentation.tex
+            presentation/presentation.pdf

@@ -33,7 +33,7 @@ jobs:
           mkdir -p public
           cp rapport/rapport.pdf public/rapport.pdf
           cp rapport/annexe/annexe.pdf public/annexe.pdf
-          cp presentation/presentation.tex public/presentation.tex
+          cp presentation/presentation.tex public/presentation.pdf
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -45,9 +45,9 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "rapport"
+          automatic_release_tag: "latex-out"
           prerelease: false
-          title: "Rapport"
+          title: "Latex out"
           files: |
             rapport/rapport.pdf
             rapport/annexe/annexe.pdf

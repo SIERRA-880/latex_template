@@ -22,18 +22,24 @@ jobs:
         with:
           root_file: annexe.tex
           working_directory : rapport/annexe/
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: presentation.tex
+          working_directory : presentation/
       - name: Copy to public folder for deployment
         shell: bash
         run: |
           mkdir -p public
           cp rapport/rapport.pdf public/rapport.pdf
           cp rapport/annexe/annexe.pdf public/annexe.pdf
+          cp presentation/presentation.tex public/presentation.tex
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: rapport-out
+          publish_branch: latex-out
           force_orphan: true # Ensures that not all previous PDFs are kept around forever
       - name: Release PDF files
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -45,3 +51,4 @@ jobs:
           files: |
             rapport/rapport.pdf
             rapport/annexe/annexe.pdf
+            presentation/presentation.tex
